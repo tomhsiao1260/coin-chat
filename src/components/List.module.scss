@@ -1,0 +1,22 @@
+.list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: scroll;
+    /* max-height: 23em; */
+    li{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        height: 30px;
+        font-size: 20px;
+        overflow: hidden;
+        border: 1px dashed blue;
+        transition: height 0.5s ease-in-out;
+        &:hover{
+            cursor: pointer;
+            height: 60px;
+        }
+    }
+}
