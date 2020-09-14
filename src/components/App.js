@@ -74,6 +74,8 @@ class App extends Component {
     let newMessage = this.state.newMessage;
     let newDate = new Date();
 
+    if(!Number(newPrice) && !newMessage){return;}
+
     // get id
     if(items[0]){
       newId = items[0].id + 1;
@@ -82,7 +84,7 @@ class App extends Component {
     }  
     
     // get date
-    newDate = `${newDate.getMonth() + 1}/${newDate.getDate()}`;
+    newDate = `${newDate.getMonth() + 1}/${newDate.getDate()}/${newDate.getFullYear()}`;
 
     const newItem = {
       id: newId,
@@ -116,12 +118,12 @@ class App extends Component {
     return (
       <div className={styles.container}>
         <Scene />
-        <CalcApp newPrice={this.state.newPrice} 
-                 price={this.handlePrice.bind(this)} 
-        />
         <Input newMessage={this.state.newMessage}
                change={this.handleChange.bind(this)}
                submit={this.handleSubmit.bind(this)}
+        />
+        <CalcApp newPrice={this.state.newPrice} 
+                 price={this.handlePrice.bind(this)} 
         />
         <List items={this.state.items} 
               removeItem={this.handleRemove.bind(this)} 

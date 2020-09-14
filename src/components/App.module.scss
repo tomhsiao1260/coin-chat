@@ -1,3 +1,13 @@
+@import '../palette.scss';
+
+html{
+    background: linear-gradient(#b380ff,#1f004d) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .container{
     width: 500px;
     display: flex;
@@ -5,5 +15,9 @@
     justify-content: flex-start;
     align-items: stretch;
     margin: auto;
-    border: 1px solid black;
+}
+@media screen and (max-width:600px) {
+    .container{
+      width: 90%;
+    }
 }

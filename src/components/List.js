@@ -16,11 +16,8 @@ const List = (props) => {
             props.items.map( item => {
               return (
                 <li key={item.id}>
-                  <div>
-                    <div>{item.price}</div>
-                    <div>{item.message}</div>
-                  </div>
-                  <div>
+                  <Item item={item}/>
+                  <div className={styles.date}>
                     <div>{item.date}</div>
                     <button id={item.id} onClick={remove}>remove</button>
                   </div>
@@ -30,6 +27,30 @@ const List = (props) => {
           }
         </ul> 
     )
+}
+
+// conditionally render items
+const Item = (props) => {
+  if(props.item.price && props.item.message){
+    return (
+      <div className={styles.main}>
+        <div>$ {props.item.price}</div>
+        <div>{props.item.message}</div>
+      </div>
+    )
+  }else if(props.item.price){
+    return (
+      <div className={styles.main}>
+        <div>$ {props.item.price}</div>
+      </div>
+    )
+  }else if(props.item.message){
+    return (
+      <div className={styles.main}>
+        <div>{props.item.message}</div>
+      </div>
+    )
+  }
 }
 
 List.propTypes = {

@@ -1,28 +1,34 @@
-$width: 100px;
-$trans: height 0.5s ease-in-out;
 $font-style-1: Helvetica, Arial, sans-serif;
+$trans: background-color 2s 0.3s ease-in-out,
+        height 0.5s ease-in-out;
 
 .calc{
+    margin-top: 10px;
+    margin-bottom: 20px;
     .price{
         button{
-            width: $width;
+            width: 20%;
             height: 0px;
             font-size: 0px;
             display: none;
             transition: $trans;
         }
         .display{
+            position: relative;
             height: 10px;
             text-align: right;
-            background: gray;
+            background: rgba(0,0,0,0.2);
             transition: $trans;
+            .close{
+                display: none;
+            }
             div{
                 position: relative;
                 top: 0px;
                 right: 0px;
                 font-size: 0px;
                 font-family: $font-style-1;
-                color: white;
+                color: #e6e6e6;
             }
         }
     }
@@ -39,7 +45,10 @@ $font-style-1: Helvetica, Arial, sans-serif;
                 width: 33.333%;
                 height: 10px;
                 font-size: 0px;
+                border-style: none;
+                border-radius: 7%;
                 transition: $trans;
+
             }
         }
         .operator{
@@ -50,7 +59,10 @@ $font-style-1: Helvetica, Arial, sans-serif;
             button{
                 height: 8px;
                 font-size: 0px;
+                border-style: none;
+                border-radius: 10%;
                 transition: $trans;
+
             }
         }
     }
@@ -64,22 +76,44 @@ $font-style-1: Helvetica, Arial, sans-serif;
             font-size: 12px;
         }
         .display{
-            height: 50px;
+            height: 80px;
+            .close{
+                position: absolute;
+                top: 10%;
+                // left: -10px;
+                color: #e6e6e6;
+                display: inline-block;
+                background-color: transparent;
+                font-size: 3px;
+                font-weight: bolder;
+                &:hover{
+                    cursor: pointer;
+                    transform: scale(1.2);
+                }
+            }
             div{
-                top: 10px;
-                right: 10px;
-                font-size: 20px;
+                top: 23px;
+                right: 30px;
+                font-size: 30px;
             }
         }
     }
     .btn{
         .number button{
             height: 50px;
-            font-size: 12px;
+            font-size: 20px;
+            color: #000099;
+            border: 1px solid #0000b3;
+            font-style: $font-style-1;
+            background-color: rgb(230, 236, 255) !important; 
         }
         .operator button{
             height: 40px;
-            font-size: 12px;
+            font-size: 17px;
+            color: #000099;
+            border: 1px solid #0000b3;
+            font-style: $font-style-1;
+            background-color: rgb(179, 179, 255) !important;
         }
     }
 }

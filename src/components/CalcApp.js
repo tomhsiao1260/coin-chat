@@ -1,13 +1,25 @@
 import React, {Component} from 'react';
 import styles from './CalcApp.module.scss';
 import p from 'prop-types';
+import palette from '../palette'
 
 class CalcApp extends Component {
 
   // open the calculator
   openCalc(e){
-    if (!e.currentTarget.classList.contains(styles.open)){
-      e.currentTarget.classList.add(styles.open);
+    if(e.target.classList.contains(styles.close)){return;}
+    const calc = document.querySelector(`.${styles.calc}`);
+    if (!calc.classList.contains(styles.open)){
+      calc.classList.add(styles.open);
+      this.props.price('');
+    }
+  }
+
+  // close the calculator
+  closeCalc(){
+    const calc = document.querySelector(`.${styles.calc}`);
+    if (calc.classList.contains(styles.open)){
+      calc.classList.remove(styles.open);
       this.props.price('');
     }
   }
@@ -52,36 +64,40 @@ class CalcApp extends Component {
   }
 
   render() {
+    const color0 = {backgroundColor: palette[0]};
+    const color1 = {backgroundColor: palette[1]};
+    const color2 = {backgroundColor: palette[2]};
     return (
       <div className={styles.calc} onClick={this.openCalc.bind(this)}>
         <div className={styles.price}>
-          <button>堯先付</button>
-          <button>恬先付</button>
+          {/* <button>堯先付</button>
+          <button>恬先付</button> */}
           <div className={styles.display}>
+            <div className={styles.close} onClick={this.closeCalc.bind(this)}>一</div>
             <div>{this.props.newPrice}</div>
           </div>
         </div>
         <div className={styles.btn}>
           <div className={styles.number}>
-            <button onClick={() => this.inputKey('7')}>7</button>
-            <button onClick={() => this.inputKey('8')}>8</button>
-            <button onClick={() => this.inputKey('9')}>9</button>
-            <button onClick={() => this.inputKey('4')}>4</button>
-            <button onClick={() => this.inputKey('5')}>5</button>
-            <button onClick={() => this.inputKey('6')}>6</button>
-            <button onClick={() => this.inputKey('1')}>1</button>
-            <button onClick={() => this.inputKey('2')}>2</button>
-            <button onClick={() => this.inputKey('3')}>3</button>
-            <button onClick={() => this.inputKey('.')}>.</button>
-            <button onClick={() => this.inputKey('0')}>0</button>
-            <button onClick={this.Calc.bind(this)}>=</button>
+            <button onClick={() => this.inputKey('7')} style={color1}>7</button>
+            <button onClick={() => this.inputKey('8')} style={color0}>8</button>
+            <button onClick={() => this.inputKey('9')} style={color2}>9</button>
+            <button onClick={() => this.inputKey('4')} style={color0}>4</button>
+            <button onClick={() => this.inputKey('5')} style={color1}>5</button>
+            <button onClick={() => this.inputKey('6')} style={color0}>6</button>
+            <button onClick={() => this.inputKey('1')} style={color2}>1</button>
+            <button onClick={() => this.inputKey('2')} style={color0}>2</button>
+            <button onClick={() => this.inputKey('3')} style={color2}>3</button>
+            <button onClick={() => this.inputKey('.')} style={color0}>.</button>
+            <button onClick={() => this.inputKey('0')} style={color1}>0</button>
+            <button onClick={this.Calc.bind(this)} style={color0}>=</button>
           </div>
           <div className={styles.operator}>
-            <button onClick={this.Delete.bind(this)}>DEL</button>
-            <button onClick={() => this.inputKey('÷')}>÷</button>
-            <button onClick={() => this.inputKey('×')}>×</button>
-            <button onClick={() => this.inputKey('-')}>-</button>
-            <button onClick={() => this.inputKey('+')}>+</button>
+            <button onClick={this.Delete.bind(this)} style={color1}>DEL</button>
+            <button onClick={() => this.inputKey('÷')} style={color0}>÷</button>
+            <button onClick={() => this.inputKey('×')} style={color1}>×</button>
+            <button onClick={() => this.inputKey('-')} style={color0}>-</button>
+            <button onClick={() => this.inputKey('+')} style={color2}>+</button>
           </div>
         </div>
       </div>

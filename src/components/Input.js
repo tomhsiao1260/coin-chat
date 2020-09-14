@@ -15,17 +15,17 @@ const Input = (props) => {
         e.preventDefault();
         props.submit();
         const calc = document.querySelector(`.${styles_calc.calc}`);
-        calc.classList.remove(styles_calc.open)
+        calc.classList.remove(styles_calc.open);
     }
     return (
-        <div className={styles.input}>
+        <form className={styles.input}>
           <input type="search" 
                  placeholder="Type something..."
                  value={props.newMessage} 
                  onChange={handleChange}
           />
           <button onClick={handleSubmit}>Send</button>
-        </div>
+        </form>
     )
 }
 
