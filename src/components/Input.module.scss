@@ -1,6 +1,6 @@
 .input{
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     input{
         padding: 10px;
         font-size: 20px;
@@ -17,6 +17,11 @@
 
         background: linear-gradient(115deg, #cc00ff, #ff0066, #ffcc00);
         animation: btnColor 0s ease infinite;
+    }
+}
+@media screen and (max-width:550px) {
+    .input{
+        margin-bottom: 0px;
     }
 }
 
