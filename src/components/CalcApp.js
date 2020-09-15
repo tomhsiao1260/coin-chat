@@ -71,8 +71,6 @@ class CalcApp extends Component {
     return (
       <div className={styles.calc} onClick={this.openCalc.bind(this)}>
         <div className={styles.price}>
-          {/* <button>堯先付</button>
-          <button>恬先付</button> */}
           <div className={styles.display}>
             <img className={styles.close} src={mini} alt='一' onClick={this.closeCalc.bind(this)}/>
             <div>{this.props.newPrice}</div>

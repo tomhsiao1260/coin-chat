@@ -6,17 +6,11 @@ $trans: background-color 1s 0.5s ease-in-out,
     margin-top: 10px;
     margin-bottom: 20px;
     .price{
-        button{
-            width: 20%;
-            height: 0px;
-            font-size: 0px;
-            display: none;
-            transition: $trans;
-        }
         .display{
             position: relative;
             height: 10px;
             text-align: right;
+            overflow: scroll;
             background: rgba(0,0,0,0.2);
             transition: $trans;
             .close{
@@ -74,11 +68,6 @@ $trans: background-color 1s 0.5s ease-in-out,
 
 .calc.open{
     .price{
-        button{
-            display: inline-block;
-            height: 30px;
-            font-size: 12px;
-        }
         .display{
             height: 80px;
             .close{
