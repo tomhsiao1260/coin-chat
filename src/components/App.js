@@ -26,17 +26,29 @@ class App extends Component {
   componentDidMount() {
     // get initial data
     this.socket.on("init", data => {
+      // convert date string into object
+      data.forEach(item => {
+        const date = Date.parse(item.date);
+        item.date = new Date(date);
+      })
+      // use reverse to put new data on top
       this.setState({ items: data.reverse() });
     });
 
     // get updated data 
     this.socket.on('output', data => {
+
+      // convert date string into object
+      let date = Date.parse(data.date);
+      date = new Date(date);
+
       const item = {
         id: data.id, 
         price: data.price, 
         message: data.message, 
-        date: data.date,
+        date,
       }
+
       let items = this.state.items;
       items.unshift(item);
       this.setState({ items });
@@ -110,6 +122,11 @@ class App extends Component {
       items: state.items.filter( item => item.id !== Number(id))
     }));
     this.socket.emit("clear id", id);
+  }
+
+  // clear all items (unused)
+  clearAll(){
+    this.socket.emit("clear all");
   }
 
   render() {

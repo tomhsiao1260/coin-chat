@@ -51,14 +51,15 @@ db.once('open', () => {
             const id = data.id;
             const price = data.price;
             const message = data.message;
-            const date = data.date;
+            const date = new Date();
+
+            const result = { id, price, message, date }
 
             // Insert message
-            const messages = new Message({ id, price, message, date })
+            const messages = new Message(result)
             messages.save(err => {
                 if (err) console.error(err)
-                socket.broadcast.emit('output', data)
-
+                socket.broadcast.emit('output', result)
                 // Saved!
                 sendStatus({
                     messages: 'Message sent',
