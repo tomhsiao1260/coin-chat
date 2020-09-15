@@ -37,7 +37,9 @@
         }
         @media screen and (max-width:550px) {
             .main{
-                width: 55%;
+                padding-left: 15px;
+                padding-right: 0px;
+                width: 60%;
             }
         }
         .date{
@@ -58,6 +60,13 @@
                 border-style: none;
                 &:hover{
                     cursor: pointer;
+                }
+            }
+            @media screen and (max-width:550px) {
+                button{
+                    font-size: 10px;
+                    height: 20px;
+                    width: 60px;
                 }
             }
         }
