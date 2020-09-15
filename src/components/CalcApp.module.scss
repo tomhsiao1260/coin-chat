@@ -1,5 +1,5 @@
 $font-style-1: Helvetica, Arial, sans-serif;
-$trans: background-color 2s 0.3s ease-in-out,
+$trans: background-color 1s 0.5s ease-in-out,
         height 0.5s ease-in-out;
 
 .calc{
@@ -48,7 +48,9 @@ $trans: background-color 2s 0.3s ease-in-out,
                 border-style: none;
                 border-radius: 7%;
                 transition: $trans;
-
+                &:hover{
+                    cursor: pointer;
+                }
             }
         }
         .operator{
@@ -62,7 +64,9 @@ $trans: background-color 2s 0.3s ease-in-out,
                 border-style: none;
                 border-radius: 10%;
                 transition: $trans;
-
+                &:hover{
+                    cursor: pointer;
+                }
             }
         }
     }
@@ -79,8 +83,9 @@ $trans: background-color 2s 0.3s ease-in-out,
             height: 80px;
             .close{
                 position: absolute;
-                top: 10%;
-                // left: -10px;
+                top: 8%;
+                left: 3%;
+                width: 25px;
                 color: #e6e6e6;
                 display: inline-block;
                 background-color: transparent;
@@ -88,7 +93,7 @@ $trans: background-color 2s 0.3s ease-in-out,
                 font-weight: bolder;
                 &:hover{
                     cursor: pointer;
-                    transform: scale(1.2);
+                    transform: scale(1.3);
                 }
             }
             div{

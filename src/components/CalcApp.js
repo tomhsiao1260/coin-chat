@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import styles from './CalcApp.module.scss';
 import p from 'prop-types';
-import palette from '../palette'
+import palette from '../palette';
+import mini from '../assets/mini.png';
 
 class CalcApp extends Component {
 
@@ -73,7 +74,7 @@ class CalcApp extends Component {
           {/* <button>堯先付</button>
           <button>恬先付</button> */}
           <div className={styles.display}>
-            <div className={styles.close} onClick={this.closeCalc.bind(this)}>一</div>
+            <img className={styles.close} src={mini} alt='一' onClick={this.closeCalc.bind(this)}/>
             <div>{this.props.newPrice}</div>
           </div>
         </div>

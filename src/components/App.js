@@ -14,8 +14,8 @@ class App extends Component {
       newPrice: '',
       items: [],
       // items: [
-      //   {id: 2, price: 20, message: 'dinner',    date: "2020/09/10"},
-      //   {id: 1, price: 10, message: 'breakfast', date: "2020/09/10"},
+      //   {id: 2, price: 20, message: 'dinner',    date: new Date()},
+      //   {id: 1, price: 10, message: 'breakfast', date: new Date()},
       // ],
     }
     // connect the socket.io
@@ -35,7 +35,7 @@ class App extends Component {
         id: data.id, 
         price: data.price, 
         message: data.message, 
-        date: data.date
+        date: data.date,
       }
       let items = this.state.items;
       items.unshift(item);
@@ -75,16 +75,14 @@ class App extends Component {
     let newDate = new Date();
 
     if(!Number(newPrice) && !newMessage){return;}
+    if(Number(newPrice)===Infinity){return;}
 
     // get id
     if(items[0]){
       newId = items[0].id + 1;
     }else{
       newId =  0;
-    }  
-    
-    // get date
-    newDate = `${newDate.getMonth() + 1}/${newDate.getDate()}/${newDate.getFullYear()}`;
+    } 
 
     const newItem = {
       id: newId,

@@ -10,6 +10,11 @@ const List = (props) => {
       props.removeItem(id);
     }
 
+    // display date
+    const newDate = (date) => {
+      return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+    }
+
     return (
         <ul className={styles.list}>
           {
@@ -18,7 +23,7 @@ const List = (props) => {
                 <li key={item.id}>
                   <Item item={item}/>
                   <div className={styles.date}>
-                    <div>{item.date}</div>
+                    <div>{newDate(item.date)}</div>
                     <button id={item.id} onClick={remove}>remove</button>
                   </div>
                 </li>
@@ -58,7 +63,7 @@ List.propTypes = {
     id: p.number.isRequired,
     price: p.oneOfType([p.string, p.number]),
     message: p.string,
-    date: p.string.isRequired,
+    date: p.object.isRequired,
   })).isRequired,
   removeItem: p.func.isRequired,
 };
