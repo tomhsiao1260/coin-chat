@@ -4,15 +4,25 @@ import p from 'prop-types';
 
 const List = (props) => {
 
+    // display date
+    const newDate = (date) => {
+      return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+    }
+
     // remove selected item
     const remove = (e) => {
       const id = e.target.id;
       props.removeItem(id);
     }
 
-    // display date
-    const newDate = (date) => {
-      return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+    // open or close the list when clicking
+    const openList = (e) => {
+      console.log(e.currentTarget)
+      if (!e.currentTarget.classList.contains(styles.open)){
+        e.currentTarget.classList.add(styles.open);
+      }else{
+        e.currentTarget.classList.remove(styles.open);
+      }
     }
 
     return (
@@ -20,7 +30,7 @@ const List = (props) => {
           {
             props.items.map( item => {
               return (
-                <li key={item.id}>
+                <li key={item.id} onClick={openList}>
                   <Item item={item}/>
                   <div className={styles.date}>
                     <div>{newDate(item.date)}</div>

@@ -1,3 +1,6 @@
+$height-1: 50px;
+$height-2: 110px;
+
 .list{
     list-style: none;
     padding: 0;
@@ -6,19 +9,18 @@
     max-height: 500px;
     background-color: #ffeee6;
     border-radius: 3%;
+    &:hover{
+        cursor: pointer;
+    }
     li{
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: space-between;
-        height: 50px;
         font-size: 20px;
         overflow: hidden;
         border-bottom: 2px solid #a6a6a6;
         transition: height 0.5s ease-in-out;
-        &:hover{
-            height: 110px;
-        }
         .main{
             position: relative;
             padding: 8px 15px 0px 25px;
@@ -30,10 +32,11 @@
                 color: #404040;
                 margin: 2px auto 15px auto;
                 -webkit-user-select: none;
+                white-space: nowrap;
             }
             @media screen and (max-width:550px) {
                 div{
-                    margin: 2px auto 12px auto;
+                    margin: 2px auto 10px auto;
                 }
             }
         }
@@ -63,6 +66,7 @@
                 border-style: none;
                 &:hover{
                     cursor: pointer;
+                    transform: scale(1.1);
                 }
             }
             @media screen and (max-width:550px) {
@@ -74,4 +78,11 @@
             }
         }
     }
+}
+
+.list li{
+    height: $height-1;
+}
+.list li.open{
+    height: $height-2;
 }
