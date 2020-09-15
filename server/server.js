@@ -51,9 +51,10 @@ db.once('open', () => {
             const id = data.id;
             const price = data.price;
             const message = data.message;
+            const userId = data.userId;
             const date = new Date();
 
-            const result = { id, price, message, date }
+            const result = { id, price, message, userId, date }
 
             // Insert message
             const messages = new Message(result)

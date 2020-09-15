@@ -1,21 +1,39 @@
-.input{
+@import '../palette.scss';
+
+$w-button: 15%;
+$gap: 1%;
+$w-input: 100% - 2 * $w-button - 2 * $gap;
+
+.input{ 
     margin-top: 10px;
     margin-bottom: 0px;
     input{
         padding: 10px;
-        font-size: 20px;
+        font-size: 18px;
         height: 50px;
-        width: 80%;
+        width: $w-input;
     }
     button{
-        font-size: 20px;
+        font-size: 15px;
         height: 50px;
-        width: 20%;
+        width: $w-button;
         color: white;
         border-radius: 5%;
         border-style: none;
-
-        background: linear-gradient(115deg, #cc00ff, #ff0066, #ffcc00);
+        margin-left: $gap;
+        box-shadow: 0 0 6px 4px rgba(0,0,0,0.12);
+        &:hover{
+            cursor: pointer;
+        }
+        &:focus{
+            border-color: none;
+        }
+        &.user0{
+            background: linear-gradient(115deg, $color7, $color8);
+        }
+        &.user1{
+            background: linear-gradient(115deg, $color8, $color9);
+        }
         animation: btnColor 0s ease infinite;
     }
 }

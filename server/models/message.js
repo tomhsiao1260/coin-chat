@@ -13,6 +13,9 @@ const MessageSchema = new Schema({
 	message: {
 		type: String,
 	},
+	userId: {
+		type: Number,
+	},
 	date: {
 		type: Date, 
 	}

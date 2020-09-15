@@ -1,3 +1,5 @@
+@import '../palette.scss';
+
 $height-1: 50px;
 $height-2: 110px;
 
@@ -7,7 +9,7 @@ $height-2: 110px;
     margin: 0;
     // overflow: scroll;
     // max-height: 500px;
-    background-color: #ffeee6;
+    background-color: $color10;
     border-radius: 3%;
     &:hover{
         cursor: pointer;
@@ -21,6 +23,12 @@ $height-2: 110px;
         overflow: hidden;
         border-bottom: 2px solid #a6a6a6;
         transition: height 0.5s ease-in-out;
+        &[userid='0']{
+            background: linear-gradient(150deg, $color10, $color10, $color10, $color7);
+        }
+        &[userid='1']{
+            background: linear-gradient(150deg, $color10, $color10, $color10, $color9);
+        }
         .main{
             position: relative;
             padding: 8px 15px 0px 25px;
@@ -57,8 +65,9 @@ $height-2: 110px;
                 -webkit-user-select: none;
             }
             button{
-                background-color: rgba(1,1,1,0.3);
-                color: #404040;
+                background-color: rgba(217,217,217,0.5);
+                box-shadow: 0 0 6px 0.1px #737373;
+                color: #333333;
                 border-radius: 5%;
                 height: 33px;
                 width: 100px;

@@ -6,6 +6,9 @@ import Input from './Input';
 import List from './List';
 import styles from './App.module.scss';
 
+const User = ['Yao', 'Tien'];
+export {User};
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -14,8 +17,8 @@ class App extends Component {
       newPrice: '',
       items: [],
       // items: [
-      //   {id: 2, price: 20, message: 'dinner',    date: new Date()},
-      //   {id: 1, price: 10, message: 'breakfast', date: new Date()},
+      //   {id: 1, price: 20, message: 'dinner', userId: 0, date: new Date()},
+      //   {id: 0, price: 10, message: 'breakfast', userId: 1, date: new Date()},
       // ],
     }
     // connect the socket.io
@@ -46,6 +49,7 @@ class App extends Component {
         id: data.id, 
         price: data.price, 
         message: data.message, 
+        userId: data.userId,
         date,
       }
 
@@ -78,12 +82,13 @@ class App extends Component {
     this.setState({ newMessage: e.target.value });
   }
 
-  // update id, price, message, date
-  handleSubmit(){
+  // update id, price, message, userId, date
+  handleSubmit(userId){
     let items = this.state.items;
     let newId;
     let newPrice = this.state.newPrice;
     let newMessage = this.state.newMessage;
+    let newUserId = userId;
     let newDate = new Date();
 
     if(!Number(newPrice) && !newMessage){return;}
@@ -100,6 +105,7 @@ class App extends Component {
       id: newId,
       message: newMessage, 
       price: newPrice,
+      userId: newUserId,
       date: newDate,
     }
     

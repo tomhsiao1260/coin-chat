@@ -17,7 +17,6 @@ const List = (props) => {
 
     // open or close the list when clicking
     const openList = (e) => {
-      console.log(e.currentTarget)
       if (!e.currentTarget.classList.contains(styles.open)){
         e.currentTarget.classList.add(styles.open);
       }else{
@@ -30,7 +29,10 @@ const List = (props) => {
           {
             props.items.map( item => {
               return (
-                <li key={item.id} onClick={openList}>
+                <li key={item.id} 
+                    onClick={openList}
+                    userid={item.userId}
+                >
                   <Item item={item}/>
                   <div className={styles.date}>
                     <div>{newDate(item.date)}</div>
@@ -73,6 +75,7 @@ List.propTypes = {
     id: p.number.isRequired,
     price: p.oneOfType([p.string, p.number]),
     message: p.string,
+    userId: p.number,
     date: p.object.isRequired,
   })).isRequired,
   removeItem: p.func.isRequired,
