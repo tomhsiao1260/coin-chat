@@ -35,17 +35,6 @@ $num-animation: num-animation 5s infinite alternate;
 			font-size: 25vw;
 		}
 	}
-	.character{
-		position: relative;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%,-50%) scale(0.5);
-		background:url(../assets/character.png);
-		height: 360px;
-		width: 160px;
-		animation: walk 1.5s steps(12) infinite;
-		animation-direction: alternate;
-	}
 }
 
 @keyframes num-animation {
@@ -55,13 +44,4 @@ $num-animation: num-animation 5s infinite alternate;
     100%{
         background-position: right;
     }
-}
-
-@keyframes walk{
-	0%{
-		background-position: 0px 0px;
-	}
-	100%{
-		background-position: 1920px 0px;
-	}
 }

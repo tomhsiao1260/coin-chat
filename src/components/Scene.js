@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './Scene.module.scss';
+import Character from './Character';
 
 const Scene = (props) => {
     return (
         <div className={styles.scene}>
           <Count total={props.total} />
-          {/* <div className={styles.character}></div> */}
+          <Character position={'10%'}/>
         </div>
     )
 }

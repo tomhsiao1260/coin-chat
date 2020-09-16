@@ -1,0 +1,102 @@
+// whole image size
+$img-width: 1920px;
+$img-height: 1440px; 
+
+// frame * channel = whole image number
+$frame: 12;
+$channel: 4;
+
+// multiply a scale factor
+$scale: 0.3;
+// for mobile
+$mobile_scale: 0.25;
+
+// move distance
+$move: 15px;
+
+// final width and height
+$width: $img-width / $frame * $scale;
+$height: $img-height / $channel * $scale;
+// for mobile
+$mobile_width: $img-width / $frame * $mobile_scale;
+$mobile_height: $img-height / $channel * $mobile_scale;
+
+// sprite sheet animation
+$walk: walk 2s steps($frame) infinite reverse;
+$move_right: move_right 2s linear infinite;
+$move_left: move_left 2s linear infinite;
+
+.character{
+    position: absolute;
+    bottom: -5%;
+    display: inline-block;
+    width: $width;
+    height: $height;
+    overflow: hidden;
+    // sprite sheet animation
+    .spriteSheet{
+        position: absolute;
+        width: $img-width * $scale;
+        height: $img-height * $scale;
+        animation: $walk;
+    } 
+    // for pixel art
+    .pixelart {
+        image-rendering: pixelated;
+    }
+    // different channel
+    &.channel1 {
+        .spriteSheet{ top: 0; }
+        animation: $move_right;
+    }
+    &.channel2 {
+        .spriteSheet{ top: -1 * $height; }
+        animation: $move_left;
+    }
+}
+@media screen and (max-width:550px) {
+    .character{
+        width: $mobile_width;
+        height: $mobile_height;
+        .spriteSheet{
+            width: $img-width * $mobile_scale;
+            height: $img-height * $mobile_scale;
+        }
+        // different channel
+        &.channel1 {
+            .spriteSheet{ top: 0; }
+            animation: $move_right;
+        }
+        &.channel2 {
+            .spriteSheet{ top: -1 * $mobile_height; }
+            animation: $move_left;
+        }
+    }
+}  
+
+@keyframes move_right{
+    0%, 10%{
+        transform: translate(0px,0)
+    }
+    72%, 100%{
+        transform: translate($move,0)
+    }
+}
+
+@keyframes move_left{
+    0%, 10%{
+        transform: translate($move,0)
+    }
+    72%, 100% {
+        transform: translate(0px,0)
+    }
+}
+
+@keyframes walk{
+    0% {
+       transform: translate(0px,0)
+    }
+    100% {
+       transform: translate(-100%,0)
+    }
+}
