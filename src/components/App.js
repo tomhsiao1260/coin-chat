@@ -15,6 +15,7 @@ class App extends Component {
     this.state = {
       newMessage: '',
       newPrice: '',
+      totalPrice: 0,
       items: [],
       // items: [
       //   {id: 1, price: 20, message: 'dinner', userId: 0, date: new Date()},
@@ -23,6 +24,8 @@ class App extends Component {
     }
     // connect the socket.io
     this.socket = io();
+
+    this.total = this.total.bind(this);
   }
 
   // add some socket event
@@ -36,6 +39,9 @@ class App extends Component {
       })
       // use reverse to put new data on top
       this.setState({ items: data.reverse() });
+      // update total price
+      const totalPrice = this.total(data);
+      this.setState({ totalPrice });
     });
 
     // get updated data 
@@ -56,6 +62,10 @@ class App extends Component {
       let items = this.state.items;
       items.unshift(item);
       this.setState({ items });
+
+      // update total price
+      const totalPrice = this.total(items);
+      this.setState({ totalPrice });
     })
 
     // informed certain data has been removed
@@ -70,6 +80,20 @@ class App extends Component {
   // close the socket
   componentWillUnmount() {
     this.socket.close()
+  }
+
+  // calculate total price
+  total(items){
+    // positive for userId: 0 
+    // negative for userId: 1
+    const factor = [1, -1];
+    let total = items.reduce((total, item) => {
+      if(item.price){
+        total += Number(item.price) * factor[item.userId];
+      }
+      return total;
+    }, 0);
+    return total;
   }
 
   // update the calculation Price
@@ -120,6 +144,10 @@ class App extends Component {
       newMessage: '',
       newPrice: '',
     })
+
+    // update total price
+    const totalPrice = this.total(items);
+    this.setState({ totalPrice });
   }
 
   // remove selected item
@@ -128,17 +156,23 @@ class App extends Component {
       items: state.items.filter( item => item.id !== Number(id))
     }));
     this.socket.emit("clear id", id);
+
+    // update total price
+    this.setState( state => ({
+      totalPrice: this.total(state.items)
+    }));
   }
 
   // clear all items (unused)
   clearAll(){
     this.socket.emit("clear all");
+    this.setState({ totalPrice: 0 });
   }
 
   render() {
     return (
       <div className={styles.container}>
-        <Scene />
+        <Scene total={this.state.totalPrice}/>
         <Input newMessage={this.state.newMessage}
                change={this.handleChange.bind(this)}
                submit={this.handleSubmit.bind(this)}

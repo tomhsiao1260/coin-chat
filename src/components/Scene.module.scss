@@ -1,7 +1,30 @@
+@import '../palette.scss';
+
 $height: 30vh;
 
 .scene{
+	position: relative;
 	height: $height;
+	.total{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		opacity: 0.5;
+		transform: translate(-50%,-50%);
+		font-size: 100px;
+		&.positive{
+			color: $color7;
+		}
+		&.negative{
+			color: $color9; 
+
+		}
+	}
+	@media screen and (max-width:550px) {
+		.total{
+			font-size: 18vw;
+		}
+	}
 	.character{
 		position: relative;
 		top: 50%;

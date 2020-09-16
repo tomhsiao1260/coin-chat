@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './List.module.scss';
+import {User} from './App';
 import p from 'prop-types';
 
 const List = (props) => {
@@ -52,13 +53,14 @@ const Item = (props) => {
     return (
       <div className={styles.main}>
         <div>$ {props.item.price}</div>
-        <div>{props.item.message}</div>
+        <div><span>{User[props.item.userId]} 先付 </span>{props.item.message}</div>
       </div>
     )
   }else if(props.item.price){
     return (
       <div className={styles.main}>
         <div>$ {props.item.price}</div>
+        <div><span>{User[props.item.userId]} 先付 </span></div>
       </div>
     )
   }else if(props.item.message){

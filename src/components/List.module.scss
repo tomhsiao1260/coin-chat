@@ -1,7 +1,7 @@
 @import '../palette.scss';
 
-$height-1: 50px;
-$height-2: 110px;
+$height-1: 40px;
+$height-2: 90px;
 
 .list{
     list-style: none;
@@ -31,20 +31,29 @@ $height-2: 110px;
         }
         .main{
             position: relative;
-            padding: 8px 15px 0px 25px;
+            padding: 5px 15px 0px 25px;
             width: 65%;
             div{
                 font-size: 23px;
-                height: 35px;
+                height: 28px;
                 overflow: scroll;
                 color: #404040;
-                margin: 2px auto 15px auto;
+                margin: 2px auto 11px auto;
                 -webkit-user-select: none;
                 white-space: nowrap;
+                span{
+                    font-size: 18px;
+                    opacity: 0.5;
+                }
             }
             @media screen and (max-width:550px) {
                 div{
+                    font-size: 18px;
                     margin: 2px auto 10px auto;
+                    span{
+                        font-size: 13px;
+                        opacity: 0.5;
+                    }
                 }
             }
         }
@@ -56,12 +65,12 @@ $height-2: 110px;
             }
         }
         .date{
-            padding: 8px 10px 10px 10px;
+            padding: 5px 10px 10px 10px;
             div{
                 text-align: center;
                 font-size: 13px;
                 color: #404040;
-                margin: 8px auto 28px auto;
+                margin: 8px auto 15px auto;
                 -webkit-user-select: none;
             }
             button{
