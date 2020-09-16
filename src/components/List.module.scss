@@ -3,14 +3,18 @@
 $height-1: 40px;
 $height-2: 90px;
 
+$time-func: cubic-bezier(.77,-0.7,.24,1.64);
+$trans: height 0.8s $time-func,
+        transform 0.8s $time-func,
+        border-radius 0.8s ease-in-out;
+
 .list{
     list-style: none;
     padding: 0;
     margin: 0;
     // overflow: scroll;
     // max-height: 500px;
-    background-color: $color10;
-    border-radius: 3%;
+    background-color: transparent;
     &:hover{
         cursor: pointer;
     }
@@ -21,13 +25,13 @@ $height-2: 90px;
         justify-content: space-between;
         font-size: 20px;
         overflow: hidden;
-        border-bottom: 2px solid #a6a6a6;
-        transition: height 0.5s ease-in-out;
+        border-radius: 5px;
+        border-bottom: 1.5px solid #a6a6a6;
         &[userid='0']{
-            background: linear-gradient(150deg, $color10, $color10, $color10, $color7);
+            background: linear-gradient(150deg, $color10, $color10, $color10, $color10, $color7);
         }
         &[userid='1']{
-            background: linear-gradient(150deg, $color10, $color10, $color10, $color9);
+            background: linear-gradient(150deg, $color10, $color10, $color10, $color10, $color9);
         }
         .main{
             position: relative;
@@ -75,12 +79,12 @@ $height-2: 90px;
             }
             button{
                 background-color: rgba(217,217,217,0.5);
-                box-shadow: 0 0 6px 0.1px #737373;
+                box-shadow: 0 0 6px 0.1px #8f8f8f;
                 color: #333333;
                 border-radius: 5%;
                 height: 33px;
                 width: 100px;
-                font-size: 20px;
+                font-size: 17px;
                 border-style: none;
                 &:hover{
                     cursor: pointer;
@@ -100,7 +104,11 @@ $height-2: 90px;
 
 .list li{
     height: $height-1;
+    transition: $trans;
 }
 .list li.open{
     height: $height-2;
+    border-radius: 10px;
+    box-shadow: 0 0px 8px 0.3px #8c8c8c;
+    transform: scale(1.05);
 }

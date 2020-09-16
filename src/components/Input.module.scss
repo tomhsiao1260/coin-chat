@@ -3,6 +3,7 @@
 $w-button: 15%;
 $gap: 1%;
 $w-input: 100% - 2 * $w-button - 2 * $gap;
+$animation: btn-animation 5s infinite alternate;
 
 .input{ 
     margin-top: 10px;
@@ -11,14 +12,17 @@ $w-input: 100% - 2 * $w-button - 2 * $gap;
         padding: 10px;
         font-size: 18px;
         height: 50px;
+        border-radius: 2px;
+        border-style: none;
         width: $w-input;
     }
     button{
-        font-size: 15px;
+        font-size: 20px;
         height: 50px;
         width: $w-button;
+        font-weight: bold;
         color: white;
-        border-radius: 5%;
+        border-radius: 2px;
         border-style: none;
         margin-left: $gap;
         box-shadow: 0 0 6px 4px rgba(0,0,0,0.12);
@@ -29,22 +33,34 @@ $w-input: 100% - 2 * $w-button - 2 * $gap;
             border-color: none;
         }
         &.user0{
-            background: linear-gradient(115deg, $color7, $color8);
+            background: linear-gradient(115deg, $color8, $color7);
+            background-size: 300%;
+            animation:  $animation;
         }
         &.user1{
             background: linear-gradient(115deg, $color8, $color9);
+            background-size: 300%;
+            animation:  $animation;
         }
-        animation: btnColor 0s ease infinite;
     }
 }
 @media screen and (max-width:550px) {
     .input{
         margin-bottom: 0px;
+        button{
+            font-size: 15px;
+        }
     }
 }
 
-@keyframes btnColor {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+@keyframes btn-animation {
+    0%{
+        background-position: left;
+    }
+    10%{
+        background-position: left;
+    }
+    100%{
+        background-position: right;
+    }
 }

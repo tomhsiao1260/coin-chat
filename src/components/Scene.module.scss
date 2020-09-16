@@ -1,28 +1,38 @@
 @import '../palette.scss';
 
 $height: 30vh;
+$num-animation: num-animation 5s infinite alternate;
 
 .scene{
 	position: relative;
 	height: $height;
 	.total{
 		position: absolute;
-		top: 50%;
+		top: 60%;
 		left: 50%;
-		opacity: 0.5;
 		transform: translate(-50%,-50%);
 		font-size: 100px;
+		opacity: 0.3;
 		&.positive{
-			color: $color7;
+			opacity: 0.7;
+			background: linear-gradient(115deg, #f2f2f2, #f2f2f2, $color7);
+			background-clip: text;
+			color: transparent;
+			background-size: 150%;
+			animation: $num-animation;
 		}
 		&.negative{
-			color: $color9; 
-
+			opacity: 0.7;
+			background: linear-gradient(115deg, #f2f2f2, #f2f2f2, $color9);
+			background-clip: text;
+			color: transparent;
+			background-size: 300%;
+			animation: $num-animation;
 		}
 	}
 	@media screen and (max-width:550px) {
 		.total{
-			font-size: 18vw;
+			font-size: 25vw;
 		}
 	}
 	.character{
@@ -36,6 +46,15 @@ $height: 30vh;
 		animation: walk 1.5s steps(12) infinite;
 		animation-direction: alternate;
 	}
+}
+
+@keyframes num-animation {
+    0%{
+        background-position: left;
+    }
+    100%{
+        background-position: right;
+    }
 }
 
 @keyframes walk{
