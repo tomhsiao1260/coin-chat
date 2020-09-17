@@ -10,6 +10,15 @@ const move_right = `${styles.character} ${styles.channel1}`;
 const move_left = `${styles.character} ${styles.channel2}`; 
 
 class Character extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            scale: this.props.scale,
+            enable: true,
+        }
+    
+        this.handleMove = this.handleMove.bind(this);
+    }
     componentDidMount() {
         const char = document.querySelector(`#${this.props.id}`);
         setTimeout(() => {  
@@ -19,11 +28,13 @@ class Character extends Component {
             this.timerID = setInterval(() => this.handleMove(), cycle/2);
         }, this.props.delay)
     }
+
     componentWillUnmount() {
         clearInterval(this.timerID);
     }  
+
     // handling character movement
-    handleMove = () => {
+    handleMove() {
         const char = document.querySelector(`#${this.props.id}`);
 
         switch (char.className){
@@ -37,9 +48,24 @@ class Character extends Component {
             default: break;
         }
     }
+    // handling transition when the character is touched
+    async handleScale() {
+        if(this.state.enable){
+            this.setState( state =>({
+                scale: state.scale * 0.7,
+                enable: false,
+            })); 
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            this.setState( state =>({
+                scale: state.scale / 0.7,
+                enable: true,
+            })); 
+        }
+    }
+
     render() {
-        const scale = this.props.scale;
-        const lift = String((1-scale) * 50) + '%';
+        const scale = this.state.scale;
+        const lift = String((1-this.state.scale) * 50) + '%';
 
         // handling position
         const style_position = {
@@ -56,7 +82,10 @@ class Character extends Component {
 
         return (
             <div id={this.props.id} className={styles.character} style={style_position}>
-                <div className={styles.scale} style={style_scale}>
+                <div className={styles.scale} 
+                     style={style_scale}
+                     onClick={this.handleScale.bind(this)}
+                >
                     <img className={styles.spriteSheet} src={character} alt="character"/>
                 </div>
             </div>

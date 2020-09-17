@@ -26,6 +26,10 @@ $walk: walk 2s steps($frame) infinite reverse;
 $move_right: move_right 2s linear infinite;
 $move_left: move_left 2s linear infinite;
 
+// scale transition
+$time-func: cubic-bezier(.77,-0.7,.24,1.64);
+$trans_scale: transform  0.5s $time-func;
+
 .character{
     position: absolute;
     bottom: -5%;
@@ -37,6 +41,7 @@ $move_left: move_left 2s linear infinite;
     .scale{
         width: $width;
         height: $height;
+        transition: $trans_scale;
     }
     // sprite sheet animation
     .spriteSheet{
@@ -109,3 +114,4 @@ $move_left: move_left 2s linear infinite;
        transform: translate(-100%,0)
     }
 }
+
