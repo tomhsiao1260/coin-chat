@@ -6,7 +6,9 @@ const Scene = (props) => {
     return (
         <div className={styles.scene}>
           <Count total={props.total} />
-          <Character position={'10%'}/>
+          <Character id={'char1'} position={'10%'} scale={0.8} delay={0}/>
+          <Character id={'char2'} position={'30%'} scale={1.2} delay={2000}/>
+          <Character id={'char3'} position={'90%'} scale={1.0} delay={3000}/>
         </div>
     )
 }

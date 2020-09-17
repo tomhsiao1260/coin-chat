@@ -33,6 +33,11 @@ $move_left: move_left 2s linear infinite;
     width: $width;
     height: $height;
     overflow: hidden;
+    // deal with scale
+    .scale{
+        width: $width;
+        height: $height;
+    }
     // sprite sheet animation
     .spriteSheet{
         position: absolute;
@@ -58,6 +63,10 @@ $move_left: move_left 2s linear infinite;
     .character{
         width: $mobile_width;
         height: $mobile_height;
+        .scale{
+            width: $mobile_width;
+            height: $mobile_height;
+        }
         .spriteSheet{
             width: $img-width * $mobile_scale;
             height: $img-height * $mobile_scale;
