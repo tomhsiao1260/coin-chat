@@ -96,6 +96,7 @@ class Role extends Component {
     }
 }
 
+// render the character with different condition
 const Character = (props) => {
 
     function Scale(){ props.funScale() };
