@@ -1,14 +1,17 @@
 import React from 'react';
 import styles from './Scene.module.scss';
-import Character from './Character';
+import Role from './Role';
 
 const Scene = (props) => {
     return (
         <div className={styles.scene}>
           <Count total={props.total} />
-          <Character id={'char1'} position={'10%'} scale={1.2} delay={0}/>
-          <Character id={'char2'} position={'30%'} scale={0.8} delay={2000}/>
-          <Character id={'char3'} position={'90%'} scale={1.0} delay={3000}/>
+          <Role id={'char1'} role={'A'} position={'70%'} scale={0.8} delay={2000}/>
+          {/* <Role id={'char2'} role={'A'} position={'90%'} scale={1.0} delay={3000}/> */}
+          {/* <Role id={'char3'} role={'A'} position={'10%'} scale={1.2} delay={0}/>   */}
+          <Role id={'char4'} role={'B'} position={'34%'} scale={0.5} delay={0}/>
+          <Role id={'char5'} role={'B'} position={'15%'} scale={0.7} delay={3000}/>
+          <Role id={'char6'} role={'B'} position={'93%'} scale={0.7} delay={1000}/>
         </div>
     )
 }

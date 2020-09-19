@@ -1,0 +1,84 @@
+// whole image size
+$img-width: 5256px;
+$img-height: 456px; 
+
+// frame * channel = whole image number
+$frame: 24;
+$channel: 1;
+
+// multiply a scale factor
+$scale: 0.3;
+// for mobile
+$mobile_scale: 0.25;
+
+// final width and height
+$width: $img-width / $frame * $scale;
+$height: $img-height / $channel * $scale;
+// for mobile
+$mobile_width: $img-width / $frame * $mobile_scale;
+$mobile_height: $img-height / $channel * $mobile_scale;
+
+// sprite sheet animation
+$walk: walk 4s steps($frame) infinite reverse;
+
+// scale transition
+$time-func: cubic-bezier(.77,-0.7,.24,1.64);
+$trans_scale: transform  0.5s $time-func;
+
+.character{
+    position: absolute;
+    bottom: -5%;
+    display: inline-block;
+    width: $width;
+    height: $height;
+    overflow: hidden;
+    // deal with scale
+    .scale{
+        width: $width;
+        height: $height;
+        transition: $trans_scale;
+    }
+    // sprite sheet animation
+    .spriteSheet{
+        position: absolute;
+        width: $img-width * $scale;
+        height: $img-height * $scale;
+        animation: $walk;
+    } 
+    // for pixel art
+    .pixelart {
+        image-rendering: pixelated;
+    }
+    // different channel
+    &.channel1 {
+        .spriteSheet{ top: 0; }
+    }
+}
+@media screen and (max-width:550px) {
+    .character{
+        width: $mobile_width;
+        height: $mobile_height;
+        .scale{
+            width: $mobile_width;
+            height: $mobile_height;
+        }
+        .spriteSheet{
+            width: $img-width * $mobile_scale;
+            height: $img-height * $mobile_scale;
+        }
+        // different channel
+        &.channel1 {
+            .spriteSheet{ top: 0; }
+        }
+    }
+}
+
+@keyframes walk{
+    0% {
+       transform: translate(0px,0)
+    }
+    100% {
+       transform: translate(-100%,0)
+    }
+}
+
