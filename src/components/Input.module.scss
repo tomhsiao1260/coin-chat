@@ -5,9 +5,15 @@ $gap: 1%;
 $w-input: 100% - 2 * $w-button - 2 * $gap;
 $animation: btn-animation 5s infinite alternate;
 
+$time-func: cubic-bezier(1,-0.05,.71,.93);
+$trans-time: 0.3s;
+$trans: all $trans-time linear;
+
 .input{ 
+    position: relative;
     margin-top: 10px;
     margin-bottom: 0px;
+    overflow: hidden;
     input{
         padding: 10px;
         font-size: 18px;
@@ -15,6 +21,30 @@ $animation: btn-animation 5s infinite alternate;
         border-radius: 2px;
         border-style: none;
         width: $w-input;
+    }
+    .placeholder{
+        position: absolute;
+        top: -130%;
+        padding-left: 3%;
+        box-sizing: border-box;
+        width: $w-input;
+        z-index: -1;
+        background: white;
+        overflow: hidden;
+        div{
+            position: relative;
+            margin: 30px auto;
+            font-weight: bold;
+            opacity: 0.4;
+            font-size: 16px;
+            transition: $trans;
+        }
+    }
+    @media screen and (max-width:550px) {
+        .placeholder{
+            top: -140%;
+            padding-left: 4%;
+        }
     }
     button{
         font-size: 20px;
