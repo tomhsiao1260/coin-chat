@@ -10,16 +10,17 @@ const RolesA = [
   // position: horizontal position on search bar
   // scale: smaller or bigger
   // delay: animation phase delay (ms)
-  <Role role={'A'} position={'70%'} scale={0.8} delay={2000} id={'char1'} key={'char1'}/>,
-  <Role role={'A'} position={'90%'} scale={1.0} delay={3000} id={'char2'} key={'char2'}/>,
+  <Role role={'A'} position={'70%'} scale={0.8} delay={1500} id={'char1'} key={'char1'}/>,
+  <Role role={'A'} position={'90%'} scale={1.0} delay={1000} id={'char2'} key={'char2'}/>,
   <Role role={'A'} position={'10%'} scale={1.2} delay={0}    id={'char3'} key={'char3'}/>,
 ]
 
 // characters for userId: 1 (dominate when props.total < 0)
 const RolesB = [
-  <Role role={'B'} position={'30%'} scale={0.5} delay={0}    id={'char4'} key={'char4'}/>,
-  <Role role={'B'} position={'15%'} scale={0.7} delay={3000} id={'char5'} key={'char5'}/>,
-  <Role role={'B'} position={'93%'} scale={0.7} delay={1000} id={'char6'} key={'char6'}/>,
+  // delay property still cannot be used on characters that won't move
+  <Role role={'B'} position={'30%'} scale={0.5} delay={0} id={'char4'} key={'char4'}/>,
+  <Role role={'B'} position={'15%'} scale={0.7} delay={0} id={'char5'} key={'char5'}/>,
+  <Role role={'B'} position={'93%'} scale={0.7} delay={0} id={'char6'} key={'char6'}/>,
 ]
 
 const Scene = (props) => {

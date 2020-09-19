@@ -18,21 +18,20 @@ class Role extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            scale: this.props.scale,
+            scale: 0,
             enable: true,
         }
     
         this.handleMove = this.handleMove.bind(this);
     }
     componentDidMount() {
-        const role = document.querySelector(`#${this.props.id}`);
         setTimeout(() => {  
-            // start to display after the delay time
-            role.style.display = 'block';
             // change the direction of movement per half cycle 
             if (this.props.role === 'A') { 
                 this.timerID = setInterval(() => this.handleMove(), cycleＡ/2);
             }
+            // change scale from 0 to this.props.scale (pop up!)
+            this.setState({scale: this.props.scale})
         }, this.props.delay)
     }
 
@@ -77,8 +76,6 @@ class Role extends Component {
         // handling position
         const stylePosition = {
             left: this.props.position,
-            // cannot be seen until the delay time is reached
-            display: 'none',
             overflow: 'visible',
         }
         // handling scale
