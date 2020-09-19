@@ -13,6 +13,7 @@ $trans: all $trans-time linear;
     position: relative;
     margin-top: 10px;
     margin-bottom: 0px;
+    // crop to make the placeholder display the same size as the <input /> element
     overflow: hidden;
     input{
         padding: 10px;
@@ -22,15 +23,18 @@ $trans: all $trans-time linear;
         border-style: none;
         width: $w-input;
     }
+    // placeholder animation
     .placeholder{
         position: absolute;
         top: -130%;
         padding-left: 3%;
-        box-sizing: border-box;
-        width: $w-input;
+        // become <input /> element background
+        // note that <input /> background should be transparent
         z-index: -1;
         background: white;
-        overflow: hidden;
+        // set the same width as the <input /> element
+        box-sizing: border-box;
+        width: $w-input;
         div{
             position: relative;
             margin: 30px auto;
@@ -42,7 +46,7 @@ $trans: all $trans-time linear;
     }
     @media screen and (max-width:550px) {
         .placeholder{
-            top: -140%;
+            top: -127%;
             padding-left: 4%;
         }
     }
