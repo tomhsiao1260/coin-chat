@@ -37,6 +37,9 @@ $trans_scale: transform  0.5s $time-func;
         width: $width;
         height: $height;
         transition: $trans_scale;
+        &:hover{
+            cursor: pointer;
+        }
     }
     // sprite sheet animation
     .spriteSheet{

@@ -1,76 +1,100 @@
 import React from 'react';
-import styles from './List.module.scss';
-import {User} from './App';
 import p from 'prop-types';
+import styles from './List.module.scss';
+import User from '../user.json';
 
 const List = (props) => {
+  // display date
+  const newDate = (date) => {
+    const result = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+    return result;
+  };
 
-    // display date
-    const newDate = (date) => {
-      return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+  // remove selected item
+  const remove = (e) => {
+    const { id } = e.target;
+    props.removeItem(id);
+  };
+
+  // open or close the list when clicking
+  const openList = (e) => {
+    if (!e.currentTarget.classList.contains(styles.open)) {
+      e.currentTarget.classList.add(styles.open);
+    } else {
+      e.currentTarget.classList.remove(styles.open);
     }
+  };
 
-    // remove selected item
-    const remove = (e) => {
-      const id = e.target.id;
-      props.removeItem(id);
-    }
+  const { items } = props;
 
-    // open or close the list when clicking
-    const openList = (e) => {
-      if (!e.currentTarget.classList.contains(styles.open)){
-        e.currentTarget.classList.add(styles.open);
-      }else{
-        e.currentTarget.classList.remove(styles.open);
+  return (
+    <ul className={styles.list}>
+      {
+        items.map((item) => (
+          <li
+            key={item.id}
+            onClick={openList}
+            userid={item.userId}
+          >
+            <Item item={item} />
+            <div className={styles.date}>
+              <div>{newDate(item.date)}</div>
+              <button type="button" id={item.id} onClick={remove}>remove</button>
+            </div>
+          </li>
+        ))
       }
-    }
-
-    return (
-        <ul className={styles.list}>
-          {
-            props.items.map( item => {
-              return (
-                <li key={item.id} 
-                    onClick={openList}
-                    userid={item.userId}
-                >
-                  <Item item={item}/>
-                  <div className={styles.date}>
-                    <div>{newDate(item.date)}</div>
-                    <button id={item.id} onClick={remove}>remove</button>
-                  </div>
-                </li>
-              )
-            })
-          }
-        </ul> 
-    )
-}
+    </ul>
+  );
+};
 
 // conditionally render items
 const Item = (props) => {
-  if(props.item.price && props.item.message){
+  const { item } = props;
+
+  if (item.price && item.message) {
     return (
       <div className={styles.main}>
-        <div>$ {props.item.price}</div>
-        <div><span>{User[props.item.userId]} 先付 </span>{props.item.message}</div>
+        <div>
+          $&nbsp;
+          {item.price}
+        </div>
+        <div>
+          <span>
+            {User[item.userId].name}
+            &nbsp;先付&nbsp;
+          </span>
+          {item.message}
+        </div>
       </div>
-    )
-  }else if(props.item.price){
-    return (
-      <div className={styles.main}>
-        <div>$ {props.item.price}</div>
-        <div><span>{User[props.item.userId]} 先付 </span></div>
-      </div>
-    )
-  }else if(props.item.message){
-    return (
-      <div className={styles.main}>
-        <div>{props.item.message}</div>
-      </div>
-    )
+    );
   }
-}
+  if (item.price) {
+    return (
+      <div className={styles.main}>
+        <div>
+          $&nbsp;
+          {item.price}
+        </div>
+        <div>
+          <span>
+            {User[item.userId].name}
+            &nbsp;先付&nbsp;
+          </span>
+        </div>
+      </div>
+    );
+  }
+  if (item.message) {
+    return (
+      <div className={styles.main}>
+        <div>{item.message}</div>
+      </div>
+    );
+  }
+
+  return null;
+};
 
 List.propTypes = {
   items: p.arrayOf(p.shape({
@@ -83,4 +107,4 @@ List.propTypes = {
   removeItem: p.func.isRequired,
 };
 
-export default List; 
+export default List;
