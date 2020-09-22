@@ -17,3 +17,15 @@ Coin Chat | <a href="http://coin-chat-demo.herokuapp.com/" target="_blank">Play 
 <h4>
 使用技術： React、Socket、ＭongoDB、CSS Animation
 <h4/>
+
+## Installation
+
+```
+npm install
+```
+
+## Start Server
+
+```
+npm start
+```
