@@ -17,6 +17,10 @@ Coin Chat | <a href="http://coin-chat-demo.herokuapp.com/" target="_blank">Play 
 <h4/>
 
 <h4>
+此外，帳目和聊天資訊會儲存在 MongoDB 雲端資料庫，並透過 socket.io 對所有裝置做即時的同步更新。 
+<h4/>
+
+<h4>
 使用技術： React、Socket、ＭongoDB、CSS Animation
 <h4/>
 
