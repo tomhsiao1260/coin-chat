@@ -24,7 +24,7 @@ http.listen(port, () => {
 });
 
 // Connect to mongoDB
-mongoose.connect('mongodb+srv://coin-chat:demo1234@cluster0.bpfnv.mongodb.net/coin-chat-demo?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://coin-chat:demo1234@cluster0.darhh.mongodb.net/coin-chat-demo?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
